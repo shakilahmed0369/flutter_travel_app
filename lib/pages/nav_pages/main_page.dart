@@ -19,12 +19,30 @@ class _MainPageState extends State<MainPage> {
     MyPage()
   ];
 
+  int currentTabIndex = 0;
+  onTap(int index) {
+    setState(() {
+      currentTabIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[0],
+      backgroundColor: Colors.white,
+      body: pages[currentTabIndex],
       bottomNavigationBar: BottomNavigationBar(
+        onTap: onTap,
+        currentIndex: currentTabIndex,
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
         selectedItemColor: Colors.black54,
+        unselectedItemColor: Colors.grey.withOpacity(0.5),
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+        elevation: 0,
         items: const [
           BottomNavigationBarItem(
             label: 'Home',
